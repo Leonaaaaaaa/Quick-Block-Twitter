@@ -4,7 +4,7 @@ function addButtonToTweets() {
     Array.from(tweets).forEach((tweet) => {
         if (!tweet.querySelector('.block-btn')) {
             const userLink = document.querySelector('a[data-testid="AppTabBar_Profile_Link"]').getAttribute("href");
-            const authorLink = tweet.querySelector('a[href*="/"]').getAttribute("href");
+            const authorLink = tweet.querySelector('a[data-pdb-handled="true"]').getAttribute("href");
             if (authorLink === userLink) {
                 return;
             }
