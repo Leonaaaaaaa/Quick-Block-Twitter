@@ -3,6 +3,11 @@ function addButtonToTweets() {
 
     Array.from(tweets).forEach((tweet) => {
         if (!tweet.querySelector('.block-btn')) {
+            const userLink = document.querySelector('a[data-testid="AppTabBar_Profile_Link"]').getAttribute("href");
+            const authorLink = tweet.querySelector('a[href*="/"]').getAttribute("href");
+            if (authorLink === userLink) {
+                return;
+            }
             const buttonContainer = document.createElement('button');
             buttonContainer.setAttribute('aria-label', 'Block');
             buttonContainer.classList.add('block-btn');
@@ -37,7 +42,7 @@ function blockUser(tweet) {
         
         const waitForDropdown = setInterval(() => {
             const dropdownBlockButton = document.querySelector('div[role="menuitem"][data-testid="block"]');
-            
+
             if (dropdownBlockButton) {
                 dropdownBlockButton.click();
                 clearInterval(waitForDropdown);
@@ -54,7 +59,6 @@ function blockUser(tweet) {
         }, 25);
     }
 }
-
 
 window.addEventListener('load', () => {
     const observer = new MutationObserver(addButtonToTweets);
