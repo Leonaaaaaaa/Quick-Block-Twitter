@@ -4,7 +4,7 @@ function addButtonToTweets() {
     Array.from(tweets).forEach((tweet) => {
         if (!tweet.querySelector('.block-btn')) {
             const userLink = document.querySelector('a[data-testid="AppTabBar_Profile_Link"]').getAttribute("href");
-            const authorLink = tweet.querySelector('a[data-pdb-handled="true"]').getAttribute("href");
+            const authorLink = tweet.querySelector('a[href*="/"]').getAttribute("href");
             if (authorLink === userLink) {
                 return;
             }
@@ -60,9 +60,6 @@ function blockUser(tweet) {
     }
 }
 
-window.addEventListener('load', () => {
-    const observer = new MutationObserver(addButtonToTweets);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    addButtonToTweets();
-});
+const observer = new MutationObserver(addButtonToTweets);
+observer.observe(document.body, { childList: true, subtree: true });
+addButtonToTweets();
