@@ -35,7 +35,7 @@ function addButtonToTweets() {
 }
 
 function blockUser(tweet) {
-    const blockButton = tweet.querySelector('button[aria-label="More"]');
+    const blockButton = tweet.querySelector('article[data-testid="tweet"] [data-testid="caret"]');
     
     if (blockButton) {
         blockButton.click();
