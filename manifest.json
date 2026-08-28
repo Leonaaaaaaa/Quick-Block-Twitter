@@ -1,10 +1,19 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Quick Block",
-    "version": "1.3",
+    "version": "1.3.1",
     "description": "Reduce blocking someone from 3 clicks to just 1",
     "icons": {
         "48": "icon/48icon.png"
+    },
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{82189f32-44d1-45c0-8428-938c2698beaf}",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
+        }
     },
 
     "content_scripts": [
